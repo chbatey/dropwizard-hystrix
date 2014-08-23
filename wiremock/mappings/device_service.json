@@ -1,0 +1,10 @@
+{
+    "request": {
+        "method": "GET",
+        "url": "/device/chris-iphone"
+    },
+    "response": {
+        "status": 200,
+        "body": "Christopher's Iphone is Great"
+    }
+}

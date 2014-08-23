@@ -1,0 +1,10 @@
+{
+    "request": {
+        "method": "GET",
+        "url": "/user/chris"
+    },
+    "response": {
+        "status": 200,
+        "body": "Chris works for Sky"
+    }
+}

@@ -1,0 +1,20 @@
+server:
+  applicationConnectors:
+    - type: http
+      port: 8080
+  adminConnectors:
+    - type: http
+      port: 8081
+
+logging:
+  level: DEBUG
+  loggers:
+    io.dropwizard: INFO
+  appenders:
+    - type: console
+
+defaultHystrixConfig:
+    hystrix.command.DeviceServiceDependency.execution.isolation.thread.timeoutInMilliseconds: 2000
+    hystrix.threadpool.PinCheckService.maxQueueSize: 50
+    hystrix.threadpool.PinCheckService.coreSize: 5
+
