@@ -17,17 +17,36 @@ public class AppConfig extends Configuration {
     @Valid
     @NotNull
     @JsonProperty
-    private HttpClientConfiguration httpClient = new HttpClientConfiguration();
+    private HttpClientConfiguration userServiceHttpClient = new HttpClientConfiguration();
+
+    @Valid
+    @NotNull
+    @JsonProperty
+    private HttpClientConfiguration deviceServiceHttpClient = new HttpClientConfiguration();
+
+    @Valid
+    @NotNull
+    @JsonProperty
+    private HttpClientConfiguration pinServiceHttpClient = new HttpClientConfiguration();
+
 
     @NotNull
     @JsonProperty
     private Map<String, Object> defaultHystrixConfig;
 
-    public HttpClientConfiguration getHttpClient() {
-        return httpClient;
-    }
-
     public Map<String, Object> getDefaultHystrixConfig() {
         return defaultHystrixConfig;
+    }
+
+    public HttpClientConfiguration getUserServiceHttpClient() {
+        return userServiceHttpClient;
+    }
+
+    public HttpClientConfiguration getDeviceServiceHttpClient() {
+        return deviceServiceHttpClient;
+    }
+
+    public HttpClientConfiguration getPinServiceHttpClient() {
+        return pinServiceHttpClient;
     }
 }

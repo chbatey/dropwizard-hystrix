@@ -13,6 +13,13 @@ logging:
   appenders:
     - type: console
 
+metrics:
+  reporters:
+    - type: graphite
+      host: 192.168.10.120
+      port: 2003
+      prefix: shiny_app
+
 defaultHystrixConfig:
     hystrix.command.DeviceServiceDependency.execution.isolation.thread.timeoutInMilliseconds: 2000
     hystrix.threadpool.PinCheckService.maxQueueSize: 50

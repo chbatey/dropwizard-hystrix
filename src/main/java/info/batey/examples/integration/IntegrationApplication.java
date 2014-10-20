@@ -22,11 +22,13 @@ public class IntegrationApplication extends Application<AppConfig> {
     public void run(AppConfig appConfig, Environment environment) throws Exception {
         ConfigurationManager.install(new MapConfiguration(appConfig.getDefaultHystrixConfig()));
 
-        final HttpClient httpClient = new HttpClientBuilder(environment).using(appConfig.getHttpClient()).build("dropwizard-http-client");
+        final HttpClient userService = new HttpClientBuilder(environment).using(appConfig.getUserServiceHttpClient()).build("UserService");
+        final HttpClient deviceService = new HttpClientBuilder(environment).using(appConfig.getDeviceServiceHttpClient()).build("DeviceService");
+        final HttpClient pinService = new HttpClientBuilder(environment).using(appConfig.getPinServiceHttpClient()).build("PinService");
 
         environment.getApplicationContext().addServlet(HystrixMetricsStreamServlet.class, "/hystrix.stream");
 
-        environment.jersey().register(new IntegrationResource(httpClient));
+        environment.jersey().register(new IntegrationResource(userService, deviceService, pinService));
     }
 
     public static void main(String[] args) throws Exception {

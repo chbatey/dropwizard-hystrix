@@ -22,7 +22,7 @@ public class PinCheckDependency extends HystrixCommand<Boolean> {
         HttpResponse pinCheckResponse = httpClient.execute(pinCheck);
         int statusCode = pinCheckResponse.getStatusLine().getStatusCode();
         if (statusCode != 200) {
-            throw new RuntimeException("Oh dear no device information, status code " + statusCode);
+            throw new RuntimeException("Oh dear no pin check, status code " + statusCode);
         }
         String pinCheckInfo = EntityUtils.toString(pinCheckResponse.getEntity());
         return Boolean.valueOf(pinCheckInfo);
