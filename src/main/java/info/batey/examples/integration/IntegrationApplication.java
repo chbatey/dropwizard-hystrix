@@ -15,7 +15,8 @@ import org.apache.http.client.HttpClient;
 public class IntegrationApplication extends Application<AppConfig> {
     @Override
     public void initialize(Bootstrap<AppConfig> appConfigBootstrap) {
-        HystrixPlugins.getInstance().registerMetricsPublisher(new HystrixCodaHaleMetricsPublisher(appConfigBootstrap.getMetricRegistry()));
+        HystrixCodaHaleMetricsPublisher metricsPublisher = new HystrixCodaHaleMetricsPublisher(appConfigBootstrap.getMetricRegistry());
+        HystrixPlugins.getInstance().registerMetricsPublisher(metricsPublisher);
     }
 
     @Override
